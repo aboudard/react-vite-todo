@@ -1,0 +1,1 @@
+import{o as t,u as r,j as o,N as s}from"./index-CvVBUbc-.js";const d=t(()=>{const e=r();return o.jsxs("nav",{children:[o.jsx(s,{to:"/",end:!0,children:"Home"}),o.jsx(s,{to:"/todos",end:!0,children:"Todos"}),o.jsx("span",{children:e.activeTodos})]})});export{d as default};
