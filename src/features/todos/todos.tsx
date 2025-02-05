@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import { useState } from "react";
-import TodosStore from "../../store/todos-store";
+import { useTodo } from "../../context/todos-context";
 
 export interface Todo {
   id: number;
@@ -9,7 +9,7 @@ export interface Todo {
 }
 
 const Todos = observer(() => {
-  const [todosStore] = useState(() => new TodosStore());
+  const todosStore = useTodo();
   const [newTodo, setNewTodo] = useState<string>("");
 
   const addTodo = () => {
@@ -20,7 +20,7 @@ const Todos = observer(() => {
 
   const toggleTodoActive = (id: number) => {
     todosStore.toggleTodoActive(id);
-  }
+  };
 
   return (
     <div>
@@ -34,7 +34,14 @@ const Todos = observer(() => {
       </button>
       <ul>
         {todosStore.todos.map((todo) => (
-          <li key={todo.id}>{todo.text} / <input type="checkbox" checked={todo.active} onChange={() => toggleTodoActive(todo.id)} /></li>
+          <li key={todo.id}>
+            {todo.text} /{" "}
+            <input
+              type="checkbox"
+              checked={todo.active}
+              onChange={() => toggleTodoActive(todo.id)}
+            />
+          </li>
         ))}
       </ul>
     </div>
