@@ -16,7 +16,7 @@ const App = observer(() => {
       </Suspense>
       <h1>{store.title}</h1>
       <div>
-        <button onClick={() => store.setTitle("Modif Title")}>
+        <button onClick={() => store.setTitle()}>
           modif title
         </button>
       </div>

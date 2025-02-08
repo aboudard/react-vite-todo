@@ -8,6 +8,7 @@ class TodosStore {
     makeObservable(this, {
       todos: observable,
       activeTodos: computed,
+      addTodo: action,
       toggleTodoActive: action,
     });
   }

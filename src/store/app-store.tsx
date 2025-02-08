@@ -1,4 +1,5 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
+import { getTitle } from "../services/app-service";
 
 class AppStore {
   title = "";
@@ -8,8 +9,12 @@ class AppStore {
     this.title = title;
   }
 
-  setTitle(title: string) {
-    this.title = title;
+  setTitle() {
+    getTitle().then((title) => {
+      runInAction(() => {
+        this.title = title;
+      });
+    });
   }
 }
 
